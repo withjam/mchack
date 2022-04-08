@@ -1,0 +1,21 @@
+{
+	"arrowParens": "avoid",
+	"printWidth": 150,
+	"bracketSpacing": true,
+	"endOfLine": "lf",
+	"semi": true,
+	"singleQuote": true,
+	"tabWidth": 4,
+	"trailingComma": "es5",
+	"useTabs": true,
+	"overrides": [
+		{
+			"files": ["*.less", "*.scss", "*.css"],
+			"options": {
+				"printWidth": 800,
+				"semi": true,
+				"singleQuote": false
+			}
+		}
+	]
+}
