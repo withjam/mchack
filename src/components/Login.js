@@ -17,6 +17,7 @@ export const Login = props => {
 	const isValid = validEmail && validPass;
 	const title = isNew ? 'Sign Up' : 'Log In';
 
+	// if already logged in, redirect to home
 	if (isAnonymous === false) {
 		return <Navigate to="/" />;
 	}

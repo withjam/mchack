@@ -8,4 +8,5 @@ export const store = configureStore({
 });
 
 export const userSelector = state => state.user;
+export const userProfileSelector = state => userSelector(state).profile;
 export const isAnonymousSelector = state => !state.user || state.user.anonymous;

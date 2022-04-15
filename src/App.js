@@ -28,7 +28,6 @@ function App() {
 		// monitor changes to firebase auth when the app initializes
 		if (dispatch) {
 			return auth.onAuthStateChanged(user => {
-				console.log('auth state change', user);
 				if (user) {
 					dispatch(login(user.toJSON()));
 				} else {
@@ -50,6 +49,7 @@ function App() {
 	if (isAnonymous === true && !location.pathname.includes('/sign/')) {
 		return <Navigate to="/sign/in" />;
 	}
+
 	return (
 		<div className="App">
 			<Header />
