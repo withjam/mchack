@@ -51,12 +51,11 @@ export const Profile = () => {
 			<picture>{profile.photoURL ? <img src={profile.photoURL} alt="" /> : <img src={noPhoto} alt="" width="220" height="220" />}</picture>
 			<header>
 				<h1>
-					<input
-						readOnly={!isEditMode}
-						value={profile.displayName ?? ''}
-						placeholder="Display name"
-						onChange={editProfile('displayName')}
-					/>
+					{isEditMode ? (
+						<input value={profile.displayName ?? ''} placeholder="Display name" onChange={editProfile('displayName')} />
+					) : (
+						profile.displayName
+					)}
 				</h1>
 				<h2>{profile.email}</h2>
 			</header>
