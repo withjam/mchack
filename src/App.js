@@ -1,4 +1,4 @@
-import './App.css';
+import './App.scss';
 import { Navigate, Outlet, useLocation } from 'react-router-dom';
 import Header from 'components/Header';
 import { initializeApp } from 'firebase/app';
