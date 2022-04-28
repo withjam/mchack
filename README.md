@@ -1,4 +1,41 @@
-# Getting Started with Create React App
+# FED CSS Hack App
+
+## Overview
+
+Evaluate, design, and apply styles to a basic React application using any mix of pre-processors, CSS frameworks, CSS-in-JS, CSS modules, styled components, etc. to achieve the desired outcome. In addition to the challenge itself is a chance to try unfamiliar tools and techniques to decide if they should be considered for future work.
+
+## Objectives
+
+• Create a consistent Look & Feel to a React app that includes Login, Signup, Profile (read-only and edit variations), with Cloudinary upload for profile images.
+• Utilize a pre-processor and any mixture of other CSS techniques to create a UI that supports rapid development
+• Learn about tools and techniques that may be new or unfamiliar
+
+## Judging Categories
+
+1. Best visual implementation of UI look & feel
+2. Best/cleanest code structure (components, markup, styles, classes, files, etc.)
+3. Best developer experience (subjective, based on presentations)
+
+## Rules
+
+1. Must have 3 screens minimum: Login, Signup, Profile. Can convert any of them to modals, if desired.
+2. Profile must have two modes: read-only vs edit. Edit mode allows changing display name and/or profile photo URL.
+3. You may modify HTML and/or components in any way desired. You can reuse, modify, or recreate any element as you wish. Add any classNames, ids, inline styles, etc.
+4. No outside help coding. You can, however, seek help with any kind of configuration settings, module installation, environment errors, react questions, advice, etc.
+5. Must utilize at least one third-party CSS utility/tool/technique. In other words, don't just use vanilla CSS for this one.
+6. Must demonstrate the app (locally) and give your opinion on the developer experience you created.
+7. You may add any other npm modules you want.
+
+## Setup
+
+Setup _should_ be as easy as running two commands:
+
+1. `yarn`; or `npm install` if you prefer
+2. `yarn start`; or `npm run start` if using npm
+3. create-react-app supports SASS out of the box, so you can immediately use sass and/or css files. If you intended to use less, there is a separate script that will also watch less files for changes. Run `yarn start:less` or `npm run start:less`
+4. If you are adding other frameworks, you may need to adjust the run script accordingly.
+
+## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
