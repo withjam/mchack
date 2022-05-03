@@ -3,6 +3,7 @@ import { Link, Navigate } from 'react-router-dom';
 import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'firebase/auth';
 import { useSelector } from 'react-redux';
 import { isAnonymousSelector } from 'state';
+import './Login.scss';
 
 const SIMPLE_EMAIL_CHECK = /^(.+)@(.+)$/;
 
@@ -68,31 +69,30 @@ export const Login = props => {
 
 	return (
 		<>
-			<form onSubmit={doSubmit}>
-				<header>
-					<h1>{title}</h1>
-				</header>
+			<form className="login-form">
+				<h1>{title}</h1>
+				<fieldset>
+					<label htmlFor="login-email">Email</label>
+					<input
+						className={`${validEmail ? 'valid' : 'invalid'}`}
+						id="login-email"
+						type="email"
+						value={email}
+						onChange={e => changeEmail(e.target.value)}
+					/>
 
-				<label>Email</label>
-				<input
-					className={`${validEmail ? 'valid' : 'invalid'}`}
-					id="login-email"
-					type="email"
-					value={email}
-					onChange={e => changeEmail(e.target.value)}
-				/>
-
-				<label>Password</label>
-				<input
-					className={`${validPass ? 'valid' : 'invalid'}`}
-					id="login-password"
-					type="password"
-					value={password}
-					onChange={e => changePassword(e.target.value)}
-				/>
-				<button type="submit" disabled={!validPass || !validEmail}>
-					{title}
-				</button>
+					<label htmlFor="login-password">Password</label>
+					<input
+						className={`${validPass ? 'valid' : 'invalid'}`}
+						id="login-password"
+						type="password"
+						value={password}
+						onChange={e => changePassword(e.target.value)}
+					/>
+					<mc-button class="primary" type="submit" onClick={doSubmit} disabled={!validPass || !validEmail}>
+						{title}
+					</mc-button>
+				</fieldset>
 			</form>
 
 			<section>

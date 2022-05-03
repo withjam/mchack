@@ -1,0 +1,15 @@
+.grid-layout {
+	@for $i from 1 through 8 {
+		&[data-size="#{$i}"] {
+			@include display-grid($i);
+		}
+	}
+}
+
+.flex-layout {
+	@for $i from 1 through 8 {
+		&[data-size="#{$i}"] {
+			@include display-flex($i);
+		}
+	}
+}

@@ -3,8 +3,9 @@ import { useState, useRef, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { userProfileSelector } from 'state';
 import ReactLoading from 'react-loading';
+import './Profile.scss';
 
-import noPhoto from '../assets/nophoto.png';
+import noPhoto from '../../assets/nophoto.png';
 
 function toCloudinaryTransform(arr) {
 	// c_crop,h_150,w_150,x_80,y_30
@@ -91,44 +92,53 @@ export const Profile = () => {
 	}
 
 	return (
-		<form onSubmit={doSubmit}>
-			<button type="button" disabled={!isEditMode} onClick={() => uploadWidget.current.open()}>
-				<picture>
-					{profile.photoURL ? (
-						<img src={profile.photoURL} alt="" width="220" height="220" />
-					) : (
-						<img src={noPhoto} alt="" width="220" height="220" />
+		<form className="profile" onSubmit={doSubmit}>
+			<fieldset>
+				<mc-button type="button" class="plain" disabled={!isEditMode} onClick={() => isEditMode && uploadWidget.current.open()}>
+					<picture>
+						{profile.photoURL ? (
+							<img src={profile.photoURL} alt="" width="220" height="220" />
+						) : (
+							<img src={noPhoto} alt="" width="220" height="220" />
+						)}
+					</picture>
+				</mc-button>
+				<header>
+					<h1>
+						{isEditMode ? (
+							<input
+								id="display-name"
+								value={profile.displayName ?? ''}
+								placeholder="Display name"
+								onChange={editProfile('displayName')}
+							/>
+						) : (
+							profile.displayName
+						)}
+					</h1>
+					<div className="meta">{profile.email}</div>
+				</header>
+				<section className="button-row">
+					{!isEditMode && (
+						<mc-button class="primary" type="button" onClick={() => setEditMode(true)}>
+							Edit
+						</mc-button>
 					)}
-				</picture>
-			</button>
-			<header>
-				<h1>
-					{isEditMode ? (
-						<input value={profile.displayName ?? ''} placeholder="Display name" onChange={editProfile('displayName')} />
-					) : (
-						profile.displayName
-					)}
-				</h1>
-				<h2>{profile.email}</h2>
-			</header>
-			<section>
-				{!isEditMode && (
-					<button type="button" onClick={() => setEditMode(true)}>
-						Edit
-					</button>
-				)}
-				{isEditMode &&
-					(isSaving ? (
-						<ReactLoading color="lightgray" type="spinningBubbles" />
-					) : (
-						<>
-							<button type="reset" onClick={doCancel}>
-								cancel
-							</button>
-							<button type="submit">Save</button>
-						</>
-					))}
-			</section>
+					{isEditMode &&
+						(isSaving ? (
+							<ReactLoading color="lightgray" type="spinningBubbles" />
+						) : (
+							<>
+								<mc-button type="reset" onClick={doCancel}>
+									Cancel
+								</mc-button>
+								<mc-button class="primary" onClick={doSubmit}>
+									Save
+								</mc-button>
+							</>
+						))}
+				</section>
+			</fieldset>
 		</form>
 	);
 };

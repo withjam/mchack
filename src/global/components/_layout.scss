@@ -1,0 +1,44 @@
+// ---------------
+// Page Layout
+// ---------------
+body {
+	background: $color-bg-body;
+	padding: rem($spacing-padding-body);
+}
+
+.page-container {
+	@include display-grid(8);
+
+	grid-template-rows: minmax(1em, auto) 1fr minmax(1em, auto);
+	min-height: 100%;
+
+	.header {
+		grid-column: span 8;
+	}
+
+	.sidebar {
+		grid-column: 1 / span 4;
+
+		@include media(desktop) {
+			border-radius: $radius-site 0 0 $radius-site;
+		}
+	}
+
+	.main {
+		background: $global-color-base-white;
+		grid-column: 5 / span 4;
+		padding: rem($spacing-padding-containers);
+
+		@include media(desktop) {
+			border-radius: 0 $radius-site $radius-site 0;
+		}
+
+		.subnav {
+			margin-top: rem(-$spacing-padding-containers + 12);
+		}
+	}
+
+	.footer {
+		grid-column: span 8;
+	}
+}

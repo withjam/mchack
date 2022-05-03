@@ -1,0 +1,24 @@
+form {
+	fieldset {
+		border: 0;
+		margin: 0;
+		padding: 0;
+	}
+	label {
+		@include font-size(16px, 24px);
+		font-weight: 600;
+	}
+	input,
+	select,
+	textarea {
+		@include font-size($size-font-input, $size-lineheight-input);
+
+		background: $color-bg-input;
+		border: 1px solid $color-border;
+		border-radius: $radius-input;
+		display: block;
+		margin-bottom: rem(20);
+		padding: rem($spacing-spadding-input);
+		width: 100%;
+	}
+}

@@ -6,6 +6,9 @@ import { BrowserRouter } from 'react-router-dom';
 import Routing from './Routing';
 import { Provider } from 'react-redux';
 import { store } from 'state';
+import { defineCustomElements as defineMayoDDL } from 'mayoddl-v2/loader';
+
+defineMayoDDL(window);
 
 const container = document.getElementById('root');
 const root = createRoot(container);

@@ -1,0 +1,15 @@
+@import "../../global/helpers";
+
+.login-form {
+	margin-bottom: rem(24);
+
+	label {
+		display: block;
+	}
+
+	@include media(desktop) {
+		input {
+			max-width: 480px;
+		}
+	}
+}

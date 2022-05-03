@@ -1,0 +1,36 @@
+@mixin display-grid($columns: null, $auto: null) {
+	@include media(desktop) {
+		display: grid;
+
+		@if $columns {
+			grid-template-columns: repeat($columns, 1fr);
+		}
+
+		@if $auto {
+			grid-template-columns: repeat(auto-fit, minmax(15.625em, 1fr));
+		}
+	}
+}
+
+@mixin display-flex($columns: 1, $fixwidth: null) {
+	display: flex;
+	flex-wrap: wrap;
+
+	> li,
+	> div {
+		flex: 1;
+
+		@if $fixwidth {
+			flex: 0 0 $fixwidth;
+		} @else {
+			@media only screen and (max-width: $media-desktop) {
+				flex: 0;
+				min-width: calc($media-desktop / $columns);
+			}
+		}
+		@media only screen and (max-width: $media-mobile) {
+			flex: 1;
+			min-width: 100%;
+		}
+	}
+}

@@ -1,0 +1,32 @@
+@import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600&display=swap");
+
+html {
+	font-size: clamp($size-font-html-min, 1.8vw, $size-font-html-max);
+}
+
+body {
+	@include font-size($size-font-body, $size-line-body);
+
+	font-family: $family-font-html;
+}
+
+h1 {
+	@include font-size($size-font-h1, $size-line-h1);
+
+	font-weight: 400;
+	margin-bottom: rem(24);
+}
+
+h2 {
+	@include font-size($size-font-h2, $size-line-h2);
+}
+
+h2 {
+	@include font-size($size-font-h3, $size-line-h3);
+}
+
+.meta {
+	@include font-size($size-font-meta, $size-line-meta);
+
+	color: $color-font-meta;
+}

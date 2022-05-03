@@ -1,0 +1,26 @@
+@import "../../global/helpers";
+
+.sidebar {
+	align-items: center;
+	background-color: $color-bg-sidebar;
+	display: flex;
+	justify-content: center;
+	padding: rem($spacing-padding-containers);
+}
+
+.sidebar-logo {
+	align-items: center;
+	display: flex;
+	flex-direction: column;
+	gap: rem(12);
+
+	img {
+		width: 80%;
+	}
+
+	.img-cssman {
+		@include media(tablet) {
+			display: none;
+		}
+	}
+}

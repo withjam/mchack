@@ -1,0 +1,7 @@
+@import "../../global/helpers";
+
+.subnav {
+	display: flex;
+	justify-content: flex-end;
+	padding-bottom: rem($spacing-padding-containers);
+}

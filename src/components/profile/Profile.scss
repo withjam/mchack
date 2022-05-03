@@ -1,0 +1,33 @@
+@import "../../global/helpers";
+
+.profile {
+	fieldset {
+		align-items: center;
+		display: flex;
+		flex-direction: column;
+		text-align: center;
+	}
+
+	h1 {
+		margin-bottom: 0;
+	}
+
+	button {
+		background: transparent;
+		border: 0;
+		margin-bottom: rem(24);
+	}
+
+	picture {
+		border: 1px solid $color-border;
+		box-shadow: 2px 2px 4px $color-border;
+		border-radius: 50%;
+		overflow: hidden;
+	}
+
+	.button-row {
+		display: flex;
+		gap: rem(8);
+		margin-top: rem(24);
+	}
+}

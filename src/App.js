@@ -1,13 +1,15 @@
-import './App.css';
+import './global/global.scss';
 import { Navigate, Outlet, useLocation } from 'react-router-dom';
-import Header from 'components/Header';
+import Header from 'components/header/Header';
+import Sidebar from 'components/sidebar/Sidebar';
+import Subnav from 'components/subnav/Subnav';
+import Footer from 'components/footer/Footer';
 import { initializeApp } from 'firebase/app';
 import { getAuth } from 'firebase/auth';
 import { isAnonymousSelector } from 'state';
 import { login, logout } from 'state/user';
 import { useDispatch, useSelector } from 'react-redux';
 import React, { useEffect } from 'react';
-
 import ReactLoading from 'react-loading';
 
 export const firebaseConfig = {
@@ -51,11 +53,14 @@ function App() {
 	}
 
 	return (
-		<div className="App">
+		<div className="page-container">
 			<Header />
-			<main>
+			<Sidebar />
+			<main className="main">
+				<Subnav />
 				<Outlet />
 			</main>
+			<Footer />
 		</div>
 	);
 }

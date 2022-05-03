@@ -1,0 +1,24 @@
+@import "../../global/helpers";
+
+.footer {
+	padding: $spacing-padding-containers 0;
+}
+.layout-demo {
+	@include font-size(14px, 18px);
+
+	gap: rem(4);
+	list-style: none;
+	padding: 0;
+
+	li {
+		border: 1px solid $color-border;
+		padding: rem(8);
+	}
+
+	&.flex-layout li {
+		background: white;
+	}
+	&.grid-layout li {
+		background: #ccc;
+	}
+}

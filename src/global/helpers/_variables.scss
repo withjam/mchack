@@ -1,0 +1,54 @@
+@import "../../../node_modules/mayoddl-tokens/build/scss/_variables.scss";
+
+// Color Palette
+
+// Typography
+$size-font-html: 18px;
+$size-lineheight-html: 24px;
+
+// Layout
+$color-bg-body: $global-color-base-purple-100;
+$radius-site: 16px;
+$spacing-padding-body: $global-size-s;
+$spacing-padding-containers: $global-size-s;
+
+// Media
+$media-desktop: 1024px;
+$media-tablet: 680px;
+$media-mobile: 480px;
+
+// Border
+$color-border: #c1c1c1;
+
+// Forms
+$color-border-input: $color-border;
+$color-bg-input: $global-color-base-white;
+$radius-input: 8px;
+$size-font-input: 16px;
+$size-lineheight-input: 20px;
+$spacing-spadding-input: 8px;
+
+// Sidebar
+$color-bg-sidebar: #282c34;
+
+// Typography
+$family-font-html: "Source Sans Pro", sans-serif;
+$size-font-html-min: 16px;
+$size-font-html-max: 28px;
+
+$size-line-body: 24px;
+$size-font-body: 18px;
+$size-line-body: 24px;
+
+$size-font-h1: 32px;
+$size-line-h1: 36px;
+
+$size-font-h2: 24px;
+$size-line-h2: 32px;
+
+$size-font-h3: 18px;
+$size-line-h3: 24px;
+
+$color-font-meta: #999;
+$size-font-meta: 16px;
+$size-line-meta: 24px;

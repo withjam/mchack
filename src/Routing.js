@@ -1,8 +1,8 @@
 import { Route, Routes } from 'react-router-dom';
 
 import App from 'App';
-import Login from 'components/Login';
-import Profile from 'components/Profile';
+import Login from 'components/login/Login';
+import Profile from 'components/profile/Profile';
 
 export default function Routing() {
 	return (
