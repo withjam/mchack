@@ -1,4 +1,4 @@
-import './App.scss';
+import './App.css';
 import { Navigate, Outlet, useLocation } from 'react-router-dom';
 import Header from 'components/Header';
 import { initializeApp } from 'firebase/app';
@@ -21,6 +21,7 @@ export const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
+
 
 function App() {
 	const dispatch = useDispatch();

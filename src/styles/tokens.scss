@@ -1,0 +1,17 @@
+:root {
+    --color-bg: #000;
+    --color-font: #fff;
+    --color-border: rgba(255,255,255,.2);
+    --color-border-edit: #009cde;
+    --color-button-text: #fff;
+    --color-button-background: #ff00a7;
+    --color-button-disabled: #333;
+    --color-link: #ff00a7;
+}
+
+html[data-theme=light] { 
+    --color-bg: #fff;
+    --color-font: rgba(0,0,0,.9);
+    --color-border: rgba(0,0,0,.2);
+    --color-button-disabled: #999;
+}

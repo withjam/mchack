@@ -1,0 +1,12 @@
+[data-component=header] {
+    position: absolute;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 24px;
+    z-index: 100;
+
+    @media (min-width: 768px) {
+        padding: 12px 40px;
+    }
+}

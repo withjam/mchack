@@ -66,46 +66,63 @@ export const Login = props => {
 		}
 	}
 
+    function clearForm() {
+        //this.password='';
+    }
+
 	return (
 		<>
-			<form onSubmit={doSubmit}>
-				<header>
-					<h1>{title}</h1>
-				</header>
+            <div data-component="login">
+                <header>
+                    <h1>{title}</h1>
+                </header>
 
-				<label>Email</label>
-				<input
-					className={`${validEmail ? 'valid' : 'invalid'}`}
-					id="login-email"
-					type="email"
-					value={email}
-					onChange={e => changeEmail(e.target.value)}
-				/>
+                <form onSubmit={doSubmit}>
+                    
 
-				<label>Password</label>
-				<input
-					className={`${validPass ? 'valid' : 'invalid'}`}
-					id="login-password"
-					type="password"
-					value={password}
-					onChange={e => changePassword(e.target.value)}
-				/>
-				<button type="submit" disabled={!validPass || !validEmail}>
-					{title}
-				</button>
-			</form>
+                    <div className="formfield" data-filled={password}>
+                        <input
+                            className={`${validEmail ? 'valid' : 'invalid'}`}
+                            id="login-email"
+                            type="email"
+                            value={email}
+                            onChange={e => changeEmail(e.target.value)}
+                        />
+                        <label>Email</label>
+                    </div>
 
-			<section>
-				{isNew ? (
-					<span>
-						Existing User? <Link to="/sign/in">Log in</Link>
-					</span>
-				) : (
-					<span>
-						New User? <Link to="/sign/up">Sign up</Link>
-					</span>
-				)}
-			</section>
+                    <div className="formfield" data-filled={password}>
+                        <input
+                            className={`${validPass ? 'valid' : 'invalid'}`}
+                            id="login-password"
+                            type="password"
+                            value={password}
+                            onChange={e => changePassword(e.target.value)}
+                        />
+                        <label>Password</label>
+                    </div>
+                </form>
+
+                <footer>
+                    <button type="submit" disabled={!validPass || !validEmail} onClick={doSubmit}>
+                        {title}
+                    </button>
+                </footer>
+
+                <section>
+                    {isNew ? (
+                        <p>
+                            Existing User? <Link to="/sign/in">Log in</Link>
+                        </p>
+                    ) : (
+                        <p>
+                            New User? <Link to="/sign/up" onClick={clearForm}>Sign up</Link>
+                        </p>
+                    )}
+                </section>
+                
+                
+            </div>
 		</>
 	);
 };

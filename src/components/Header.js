@@ -1,7 +1,8 @@
-import logo from 'assets/logo.svg';
+//import logo from 'assets/logo.svg';
 import { getAuth } from 'firebase/auth';
 import { useSelector } from 'react-redux';
 import { isAnonymousSelector } from 'state';
+import ThemeToggle from './ThemeToggle';
 
 export const Header = () => {
 	const isAnonymous = useSelector(isAnonymousSelector);
@@ -9,10 +10,9 @@ export const Header = () => {
 		getAuth().signOut();
 	}
 	return (
-		<header className="App-header">
-			<div></div>
-			<img src={logo} className="App-logo" alt="logo" />
-			<div>{isAnonymous === false && <button onClick={logout}>Logout</button>}</div>
+		<header data-component="header">
+            <ThemeToggle></ThemeToggle>
+			{isAnonymous === false && <button onClick={logout} className="ghost sm">Logout</button>}
 		</header>
 	);
 };

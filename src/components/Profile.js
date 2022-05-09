@@ -4,8 +4,6 @@ import { useSelector } from 'react-redux';
 import { userProfileSelector } from 'state';
 import ReactLoading from 'react-loading';
 
-import noPhoto from '../assets/nophoto.png';
-
 function toCloudinaryTransform(arr) {
 	// c_crop,h_150,w_150,x_80,y_30
 	return `c_crop,h_${arr.height},w_${arr.width},x_${arr.x},y_${arr.y}`;
@@ -91,45 +89,54 @@ export const Profile = () => {
 	}
 
 	return (
-		<form onSubmit={doSubmit}>
-			<button type="button" disabled={!isEditMode} onClick={() => uploadWidget.current.open()}>
-				<picture>
-					{profile.photoURL ? (
-						<img src={profile.photoURL} alt="" width="220" height="220" />
-					) : (
-						<img src={noPhoto} alt="" width="220" height="220" />
-					)}
-				</picture>
-			</button>
-			<header>
-				<h1>
-					{isEditMode ? (
-						<input value={profile.displayName ?? ''} placeholder="Display name" onChange={editProfile('displayName')} />
-					) : (
-						profile.displayName
-					)}
-				</h1>
-				<h2>{profile.email}</h2>
-			</header>
-			<section>
-				{!isEditMode && (
-					<button type="button" onClick={() => setEditMode(true)}>
-						Edit
-					</button>
-				)}
-				{isEditMode &&
-					(isSaving ? (
-						<ReactLoading color="lightgray" type="spinningBubbles" />
-					) : (
-						<>
-							<button type="reset" onClick={doCancel}>
-								cancel
-							</button>
-							<button type="submit">Save</button>
-						</>
-					))}
-			</section>
-		</form>
+        <form onSubmit={doSubmit} data-component="profile">
+            {profile.photoURL && 
+                <img src={profile.photoURL} alt="{profile.displayName}" className="bgphoto" />
+            }               
+
+            <div className="photo">
+                <button type="button" disabled={!isEditMode} onClick={() => uploadWidget.current.open()} className="ghost profile">
+                    <picture>
+                        {profile.photoURL ? (
+                            <img src={profile.photoURL} alt="{profile.displayName}" />
+                        ) : (
+                            <svg height="240" viewBox="0 0 32 32" width="240" xmlns="http://www.w3.org/2000/svg"><g id="user_account_people_man" data-name="user, account, people, man"><path fill="var(--color-font)" d="m23.7373 16.1812a1 1 0 1 0 -1.4062 1.4218 8.9378 8.9378 0 0 1 2.6689 6.397c0 1.2231-3.5059 3-9 3s-9-1.7778-9-3.002a8.9385 8.9385 0 0 1 2.6348-6.3627 1 1 0 1 0 -1.4141-1.4141 10.9267 10.9267 0 0 0 -3.2207 7.7788c0 3.2476 5.667 5 11 5s11-1.7524 11-5a10.92 10.92 0 0 0 -3.2627-7.8188z"/><path fill="var(--color-font)" d="m16 17a7 7 0 1 0 -7-7 7.0081 7.0081 0 0 0 7 7zm0-12a5 5 0 1 1 -5 5 5.0059 5.0059 0 0 1 5-5z"/></g></svg>
+                        )}
+                    </picture>
+                </button>
+            </div>
+
+            <header>
+                {isEditMode ? (
+                    <div class="formfield">
+                        <input value={profile.displayName ?? ''} onChange={editProfile('displayName')} />
+                        <label>Display Name</label>
+                    </div>
+                ) : (
+                    <h1>{profile.displayName}</h1>
+                )}
+                <h2>{profile.email}</h2>
+            </header>
+
+            <section>
+                {!isEditMode && (
+                    <button type="button" onClick={() => setEditMode(true)}>
+                        Edit
+                    </button>
+                )}
+                {isEditMode &&
+                    (isSaving ? (
+                        <ReactLoading color="lightgray" type="spinningBubbles" />
+                    ) : (
+                        <>
+                            <button type="reset" onClick={doCancel} className="ghost">
+                                Cancel
+                            </button>
+                            <button type="submit">Save</button>
+                        </>
+                    ))}
+            </section>
+        </form>
 	);
 };
 

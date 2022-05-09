@@ -1,0 +1,36 @@
+.formfield {
+    border: 1px solid var(--color-border);
+    padding: 24px 8px 8px 8px;
+    border-radius: 4px;
+
+    label {
+        position: absolute;
+        left: 11px;
+        bottom: 12px;
+        z-index: 1;
+        font-size: 16px;
+        text-transform: uppercase;
+        transition: all .2s ease-in-out;
+    }
+
+    input {
+        z-index: 2;
+        width: 100%;
+        border: none;
+        font-size: clamp(18px,2.2vw,22px);
+    }
+
+
+    input:focus + label, input:not([value='']) + label {
+        font-size: 10px;
+        transform: translateY(-20px);
+    }
+
+    @media screen and (min-width: 768px)  {
+        input:focus + label, input:not([value='']) + label {
+            transform: translateY(-24px);
+        }
+    }
+
+}
+
