@@ -1,0 +1,93 @@
+@mixin add-outline($color: var(--color-secondary)) {
+  &:focus {
+		outline: none;
+		outline: 2px dashed;
+		outline-offset: 2px;
+		outline-color: $color;
+	}
+	&:focus:not(:focus-visible) {
+		outline: none;
+	}
+	&:focus-visible {
+		outline: none;
+		outline: 2px dashed;
+		outline-offset: 4px;
+		outline-color: $color;
+	}
+}
+
+@mixin add-padding($top:0, $right: 0, $bottom: 0, $left: 0, $all: 0) {
+	$a-top:  $top * 8px;
+	$a-right:  $right * 8px;
+	$a-bottom:  $bottom * 8px;
+	$a-left:  $left * 8px;
+	$a-all:  $all * 8px;
+	@if $all != 0 {
+    	padding-block-end: $a-all;
+		padding-block-start: $a-all;
+		padding-inline-start: $a-all;
+		padding-inline-end: $a-all;
+ 	}
+	@if $top != 0 {
+    	padding-block-start: $a-top;
+ 	}
+	@if $bottom != 0 {
+    	padding-block-end: $a-bottom;
+ 	}
+	@if $left != 0 {
+    	padding-inline-start: $a-left;
+ 	}
+	 @if $left != 0 {
+    	padding-inline-end: $a-right;
+ 	}
+}
+
+@mixin add-margin($top: -1, $right: -1, $bottom: -1, $left: -1, $all: -1) {
+	$a-top:  $top * 8px;
+	$a-right:  $right * 8px;
+	$a-bottom:  $bottom * 8px;
+	$a-left:  $left * 8px;
+	$a-all:  $all * 8px;
+	@if $all != -1 {
+    	margin-block-end: $a-all;
+		margin-block-start: $a-all;
+		margin-inline-start: $a-all;
+		margin-inline-end: $a-all;
+ 	}
+	@if $top != -1 {
+    	margin-block-start: $a-top;
+ 	}
+	@if $bottom != -1 {
+    	margin-block-end: $a-bottom;
+ 	}
+	@if $left != -1 {
+    	margin-inline-start: $a-left;
+ 	}
+	 @if $left != -1 {
+    	margin-inline-end: $a-right;
+ 	}
+}
+
+@mixin button($d-bo-color, $d-f-color, $d-ba-color,$h-bo-color, $h-f-color, $h-ba-color ) {
+  	border: 1px solid $d-bo-color;
+	color: $d-f-color;
+	background: $d-ba-color;
+	font-size: 16px;
+	&:hover {
+		cursor: pointer;
+		background: $h-ba-color;
+		color: $h-f-color;
+		border: 1px solid $h-bo-color;
+	}
+}
+
+@mixin shadow-container() {
+	background-color: #fff;
+    border: none;
+    border-radius: var(--border-r-lg);
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
+	box-sizing: border-box;
+    border: 1px solid #ccc;
+    @include add-padding($all: 3);
+    @include add-margin($bottom: 5);
+}

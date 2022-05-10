@@ -1,0 +1,70 @@
+@import "scss/mixins.scss";
+.content {
+	display: grid;
+    grid-gap: 48px 24px;
+    grid-template-columns: repeat(4, 1fr);
+	max-width: 1344px;
+	margin: 0 auto;
+	@include add-padding(0, 3, 0, 3);
+    @include add-margin($top: 3);
+	
+	.col {
+		grid-column: span 4;
+	}
+	@media only screen and (min-width: 768px)  { 
+		display: grid;
+		grid-gap: 48px 24px;
+		box-sizing: border-box;
+		grid-template-columns: repeat(16, 1fr);
+	}
+	
+
+	.col {
+        grid-column: span 4;
+        &[data-size="4"]  {
+            @media only screen and (min-width: 768px)  { 
+                grid-column: span 4;
+            }
+		}
+        &[data-size="5"]  {
+			@media only screen and (min-width: 768px)  { 
+				grid-column: span 5;
+			}
+		}
+        &[data-size="6"]  {
+			@media only screen and (min-width: 768px)  { 
+				grid-column: span 6;
+			}
+		}
+        &[data-size="7"]  {
+			@media only screen and (min-width: 768px)  { 
+				grid-column: span 7;
+			}
+		}
+        &[data-size="8"]  {
+			@media only screen and (min-width: 768px)  { 
+				grid-column: span 8;
+			}
+		}
+        &[data-size="9"]  {
+			@media only screen and (min-width: 768px)  { 
+				grid-column: span 9;
+			}
+		}
+        &[data-size="10"]  {
+			@media only screen and (min-width: 768px)  { 
+				grid-column: span 10;
+			}
+		}
+		&[data-size="11"]  {
+			@media only screen and (min-width: 768px)  { 
+				grid-column: span 11;
+			}
+		}
+		&[data-size="12"]  {
+			@media only screen and (min-width: 768px)  { 
+				grid-column: span 12;
+			}
+		}
+	}
+}

@@ -1,0 +1,43 @@
+@import "scss/mixins.scss";
+
+.form-section {
+	margin-bottom: 24px;
+}
+
+fieldset {
+	border: none;
+	padding: 0;
+	margin: 0;
+}
+
+legend {
+	font-weight: bold;
+	background: #fff;
+	border: none;
+	padding: 12px;
+	border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+label {
+	font-weight: bold;
+	font-size: 16px;
+	margin-block-end: 6px;
+	display: block;
+}
+
+input[type=text],
+input[type=email],
+input[type=password] {
+	border: 2px solid #333;
+	border-radius: 5px;
+	background: #fff;
+	box-sizing: border-box;
+    @include add-padding($all: 2);
+	@include add-outline;
+}

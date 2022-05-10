@@ -1,0 +1,27 @@
+@import "scss/mixins.scss";
+
+button {
+    background: none;
+	@include add-padding($all:2);
+    @include add-outline;
+	border-radius: 5px;
+	&.primary:enabled  {
+        @include button(var(--color-secondary), #fff, var(--color-secondary), var(--color-secondary), var(--color-secondary), #fff);
+	}
+	&.secondary:enabled {
+		@include button(#fff, var(--color-black-70), #fff, var(--color-black-70), var(--color-black-70), #fff);
+		text-decoration: underline;
+		&:hover {
+			text-decoration: none;
+		}
+	}
+	&.invert:enabled {
+        @include button(#fff, #fff, var(--color-primary), var(--color-primary), var(--color-secondary), #fff);
+		outline-color: #fff;
+	}
+}
+
+button:disabled {
+	color: #ccc;
+	border: 1px solid #ccc;
+}

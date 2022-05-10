@@ -1,0 +1,34 @@
+@import "scss/mixins.scss";
+
+.profile-manage {
+    display: flex;
+	margin: 0 auto;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    @include shadow-container();
+	
+	.image,
+    .info {
+        width: calc(50% - 8px);
+    }
+
+    img {
+        width: 100%;
+        @include add-margin($bottom: 3);
+    }
+
+    input {
+        @include add-margin($bottom: 3);
+    }
+
+    .actions {
+        width: 100%;
+    }
+
+    .edit {
+        button + button{
+            @include add-margin($left: 1);
+        }
+    }
+
+}

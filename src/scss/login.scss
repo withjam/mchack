@@ -1,0 +1,31 @@
+
+@import "scss/mixins.scss";
+
+.login-container {
+	@include shadow-container();
+}
+
+.login {
+	margin-block-end: 24px;
+	button {
+		display: block;
+		width: 100%;
+		font-size: var(--font-size-md);
+		font-weight: 800;
+	}
+	input {
+		width: 100%;
+	}
+}
+.user-type {
+	font-size: var(--font-size-sm);
+	a {
+		text-decoration: underline;
+		font-weight: 800;
+		display: block;
+		text-align: center;
+		&:hover {
+			text-decoration: none;
+		}
+	}
+}

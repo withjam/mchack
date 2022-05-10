@@ -1,0 +1,23 @@
+
+@import "scss/mixins.scss";
+.card-deck {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    @include add-padding($top: 3, $left: 3, $right: 3);
+    @include add-margin($bottom: 5);
+}
+
+.card-item {
+    width: calc(50% -  16px);   
+    @include add-margin($bottom: 3);
+    @media only screen and (min-width: 768px)  { 
+        width: calc(33% -  16px);   
+    }
+    img {
+        width: 100%;
+        @include add-margin($bottom: 1);
+    }     
+}

@@ -54,7 +54,9 @@ function App() {
 		<div className="App">
 			<Header />
 			<main>
-				<Outlet />
+				<article>
+					<Outlet />
+				</article>
 			</main>
 		</div>
 	);

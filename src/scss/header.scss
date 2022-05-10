@@ -1,0 +1,22 @@
+
+@import "scss/mixins.scss";
+.App-header {
+	background-color: var(--color-primary);
+    height: 100px;
+    border-bottom: 8px solid var(--color-secondary);
+    border-top: 8px solid var(--color-secondary);
+	img {
+		width: 80px;
+        display: none;
+	}
+}
+
+.header-container {
+    max-width: 1344px;
+	margin: 0 auto;
+	@include add-padding(0, 6, 0, 6);
+    display: flex;
+    justify-content:flex-end;
+    align-items: center;
+    height: 100%;
+}
