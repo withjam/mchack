@@ -13,7 +13,6 @@
 		"firebase": "^9.6.10",
 		"less": "^4.1.2",
 		"less-watch-compiler": "^1.16.3",
-		"mayoddl-tokens": "git@github.com:jtruhler/style-dictionary.git",
 		"mayoddl-v2": "git@github.com:jtruhler/designsystempoc.git",
 		"react": "^18.0.0",
 		"react-dom": "^18.0.0",

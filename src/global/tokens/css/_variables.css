@@ -1,0 +1,26 @@
+/**
+ * Do not edit directly
+ * Generated on Tue, 10 May 2022 16:29:23 GMT
+ */
+
+:root {
+  --global-color-base-red-100: #FF144A;
+  --global-color-base-yellow-100: #FFFE00;
+  --global-color-base-green-100: #76FD13;
+  --global-color-base-blue-100: #00CEFF;
+  --global-color-base-blue-200: #0082FF;
+  --global-color-base-blue-300: #004CBE;
+  --global-color-base-blue-400: #00388b;
+  --global-color-base-purple-100: #E5E6F9;
+  --global-color-base-purple-200: #4B4ED1;
+  --global-color-base-purple-300: #2C2C4F;
+  --global-color-base-grey-100: #efefef;
+  --global-color-base-grey-200: #777777;
+  --global-color-base-grey-300: #999999;
+  --global-color-base-white: #ffffff;
+  --global-color-base-black: #000000;
+  --global-size-l: 56px;
+  --global-size-m: 48px;
+  --global-size-s: 32px;
+  --global-size-xsm: 1px;
+}

@@ -6509,12 +6509,9 @@
   dependencies:
     "tmpl" "1.0.5"
 
-"mayoddl-tokens@git@github.com:jtruhler/style-dictionary.git":
-  "resolved" "git+ssh://git@github.com/jtruhler/style-dictionary.git#bbb6f2c11ff387129378038b732c1e78c5b2fcf7"
-  "version" "1.0.0"
-
 "mayoddl-v2@git@github.com:jtruhler/designsystempoc.git":
-  "resolved" "git+ssh://git@github.com/jtruhler/designsystempoc.git#847736bfc10c4c6a8d77d49d95d89374d403bbbd"
+  "integrity" "sha512-7EB161JqY2GK8K1IwGUd5PDLzvib0ZJz67ZV1pAN4jk1Hd8neckZwdUC4kBGLvrb8ucZjG3sUDcImg+dbcFiYw=="
+  "resolved" "git+ssh://git@github.com/jtruhler/designsystempoc.git"
   "version" "0.0.2"
   dependencies:
     "@stencil/core" "^2.13.0"

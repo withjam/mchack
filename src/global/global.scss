@@ -1,6 +1,13 @@
+@import "./tokens/css/_variables";
 @import "./helpers.scss";
 @import "./utilities/_reset.scss";
 @import "./utilities/_grid.scss";
 @import "./utilities/_typography.scss";
 @import "./components/_form.scss";
 @import "./components/_layout.scss";
+
+// Token Overrides
+:root {
+	--global-color-base-blue-300: #6b00b2;
+	--global-color-base-blue-400: #4e0082;
+}
