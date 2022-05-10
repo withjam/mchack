@@ -3,7 +3,6 @@
 	"version": "0.1.0",
 	"private": true,
 	"dependencies": {
-		"@kaizen/design-tokens": "^8.0.2",
 		"@reduxjs/toolkit": "^1.8.1",
 		"@testing-library/jest-dom": "^5.16.4",
 		"@testing-library/react": "^12.1.4",
@@ -11,8 +10,6 @@
 		"concurrently": "^7.1.0",
 		"dotenv": "^16.0.0",
 		"firebase": "^9.6.10",
-		"less": "^4.1.2",
-		"less-watch-compiler": "^1.16.3",
 		"mayoddl-v2": "git@github.com:jtruhler/designsystempoc.git",
 		"react": "^18.0.0",
 		"react-dom": "^18.0.0",
