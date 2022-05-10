@@ -3,6 +3,7 @@ import { Link, Navigate } from 'react-router-dom';
 import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'firebase/auth';
 import { useSelector } from 'react-redux';
 import { isAnonymousSelector } from 'state';
+import Header from '../Header/Header';
 
 const SIMPLE_EMAIL_CHECK = /^(.+)@(.+)$/;
 
@@ -66,47 +67,57 @@ export const Login = props => {
 		}
 	}
 
+	function growLabel(input) {
+		let label = document.querySelector(`label[for=${input.id}]`);
+		if (!label.classList.contains('non-placeholder')) {
+			label.classList.add('non-placeholder');
+		}
+	}
+
+	function shrinkLabel(input) {
+		if (!input.value) {
+			let label = document.querySelector(`label[for=${input.id}]`);
+			label.classList.remove('non-placeholder');
+		}
+	}
+
 	return (
-		<>
+		<section className="card login">
+			<Header/>
+			<section className="tabs">
+				<Link to="/sign/in" className={!isNew ? "active" : ""}>Log in</Link>
+				<Link to="/sign/up" className={isNew ? "active" : ""}>Sign up</Link>
+			</section>
 			<form onSubmit={doSubmit}>
-				<header>
-					<h1>{title}</h1>
-				</header>
-
-				<label>Email</label>
-				<input
-					className={`${validEmail ? 'valid' : 'invalid'}`}
-					id="login-email"
-					type="email"
-					value={email}
-					onChange={e => changeEmail(e.target.value)}
-				/>
-
-				<label>Password</label>
-				<input
-					className={`${validPass ? 'valid' : 'invalid'}`}
-					id="login-password"
-					type="password"
-					value={password}
-					onChange={e => changePassword(e.target.value)}
-				/>
+				<div className="input">
+					<label htmlFor="login-email">Email</label>
+					<input
+						className={`${validEmail ? 'valid' : 'invalid'}`}
+						id="login-email"
+						type="email"
+						value={email}
+						onChange={e => {changeEmail(e.target.value); growLabel(e.target);}}
+						onFocus={e => growLabel(e.target)}
+						onBlur={e => shrinkLabel(e.target)}
+					/>
+				</div>
+				<div className="input">
+					<label htmlFor="login-password">Password</label>
+					<input
+						className={`${validPass ? 'valid' : 'invalid'}`}
+						id="login-password"
+						type="password"
+						value={password}
+						onChange={e => {changePassword(e.target.value); growLabel(e.target);}}
+						onFocus={e => growLabel(e.target)}
+						onBlur={e => shrinkLabel(e.target)}
+					/>
+				</div>
 				<button type="submit" disabled={!validPass || !validEmail}>
 					{title}
 				</button>
 			</form>
-
-			<section>
-				{isNew ? (
-					<span>
-						Existing User? <Link to="/sign/in">Log in</Link>
-					</span>
-				) : (
-					<span>
-						New User? <Link to="/sign/up">Sign up</Link>
-					</span>
-				)}
-			</section>
-		</>
+		</section>
 	);
 };
 

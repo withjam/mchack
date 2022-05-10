@@ -1,0 +1,71 @@
+.App-logo {
+	height: 50px;
+}
+.App-header {
+	align-items: center;
+	background-color: @raisin-black;
+	color: @deep-saffron;
+	display: flex;
+	flex-direction: row;
+	font-size: 40px;
+	gap: 16px;
+	justify-content: flex-start;
+	padding: 16px 32px;
+	button {
+		border: 1px solid @deep-saffron;
+		color: @deep-saffron;
+		margin: 0 0 0 auto;
+		padding: @gutter;
+		width: initial;
+		&:active,
+		&:focus,
+		&:hover {
+			background: #ffffff1f;
+			color: @white;
+			text-decoration: underline;
+		}
+	}
+}
+.App-link {
+	color: @spanish-blue;
+}
+.menu-trigger[aria-expanded=true] {
+	z-index: 2;
+	& + #menu {
+		align-items: center;
+		display: flex;
+		justify-content: space-evenly;
+		flex-direction: column;
+	}
+}
+#menu {
+	background: @rufous;
+	display: none;
+	margin: 0;
+	padding: 0;
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: 1;
+	list-style-type: none;
+	a {
+		color: @deep-saffron;
+		font-size: (@gutter*3);
+		padding: 1em;
+		text-decoration: none;
+		transition: color .3s ease, border-bottom .3s ease;
+		&:active,
+		&:focus,
+		&:hover {
+			color: @white;
+			border-bottom: 3px solid;
+		}
+	}
+	li {
+		line-height: 1em;
+		padding: 0;
+		margin: 0;
+	}
+}

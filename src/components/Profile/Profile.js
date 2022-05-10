@@ -3,8 +3,11 @@ import { useState, useRef, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { userProfileSelector } from 'state';
 import ReactLoading from 'react-loading';
+import Header from '../Header/Header';
+// import Uploady from "@rpldy/uploady";
+// import UploadButton from "@rpldy/upload-button";
 
-import noPhoto from '../assets/nophoto.png';
+import noPhoto from '../../assets/nophoto.png';
 
 function toCloudinaryTransform(arr) {
 	// c_crop,h_150,w_150,x_80,y_30
@@ -84,52 +87,97 @@ export const Profile = () => {
 		setProfile({ ...user });
 	}
 
-	function editProfile(propName) {
-		return ev => {
-			setProfile({ ...profile, [propName]: ev.target.value });
-		};
+	function editProfile(propName, value) {
+		setProfile({ ...profile, [propName]: value });
+	}
+
+	function growAllLabels() {
+		[...document.querySelectorAll('input')].forEach(input => {
+			growLabel(input);
+		});
+	}
+
+	function onSetEditMode() {
+		setTimeout(growAllLabels, 100);
+	}
+
+	function growLabel(input) {
+		let label = document.querySelector(`label[for=${input.id}]`);
+		if (!label.classList.contains('non-placeholder')) {
+			label.classList.add('non-placeholder');
+		}
+	}
+
+	function shrinkLabel(input) {
+		if (!input.value) {
+			let label = document.querySelector(`label[for=${input.id}]`);
+			label.classList.remove('non-placeholder');
+		}
 	}
 
 	return (
-		<form onSubmit={doSubmit}>
-			<button type="button" disabled={!isEditMode} onClick={() => uploadWidget.current.open()}>
-				<picture>
-					{profile.photoURL ? (
-						<img src={profile.photoURL} alt="" width="220" height="220" />
-					) : (
-						<img src={noPhoto} alt="" width="220" height="220" />
-					)}
-				</picture>
-			</button>
-			<header>
-				<h1>
+		<section className="card profile">
+			<Header/>
+			<form onSubmit={doSubmit}>
+					<picture>
+						{profile.photoURL ? (
+							<img src={profile.photoURL} alt="" width="220" height="220" />
+						) : (
+							<img src={noPhoto} alt="" width="220" height="220" />
+						)}
+					<button type="button" disabled={!isEditMode} onClick={() => uploadWidget.current.open()}>Edit profile image</button>
+					</picture>
+				<section id="details">
 					{isEditMode ? (
-						<input value={profile.displayName ?? ''} placeholder="Display name" onChange={editProfile('displayName')} />
-					) : (
-						profile.displayName
-					)}
-				</h1>
-				<h2>{profile.email}</h2>
-			</header>
-			<section>
-				{!isEditMode && (
-					<button type="button" onClick={() => setEditMode(true)}>
-						Edit
-					</button>
-				)}
-				{isEditMode &&
-					(isSaving ? (
-						<ReactLoading color="lightgray" type="spinningBubbles" />
+						<>
+							<div className="input">
+								<label htmlFor="username">Username</label>
+								<input
+									id="username"
+									value={profile.displayName ?? ''}
+									onChange={e => {editProfile('displayName', e.target.value); growLabel(e.target);}}
+									onFocus={e => growLabel(e.target)}
+									onBlur={e => shrinkLabel(e.target)}
+								/>
+							</div>
+							<div className="input">
+								<label htmlFor="email">Email address</label>
+								<input
+									id="email"
+									value={profile.email ?? ''}
+									onChange={e => {editProfile('email', e.target.value); growLabel(e.target);}}
+									onFocus={e => growLabel(e.target)}
+									onBlur={e => shrinkLabel(e.target)}
+								/>
+							</div>
+						</>
 					) : (
 						<>
-							<button type="reset" onClick={doCancel}>
-								cancel
-							</button>
-							<button type="submit">Save</button>
+							<h1 id="username">@{profile.displayName}</h1>
+							<h2 id="email">{profile.email}</h2>
 						</>
-					))}
-			</section>
-		</form>
+					)}
+				</section>
+				<section id="controls">
+					{!isEditMode && (
+						<button type="button" onClick={() => {setEditMode(true); onSetEditMode();}}>
+							Edit
+						</button>
+					)}
+					{isEditMode &&
+						(isSaving ? (
+							<ReactLoading color="lightgray" type="spinningBubbles" />
+						) : (
+							<>
+								<button type="reset" onClick={doCancel}>
+									cancel
+								</button>
+								<button type="submit">Save</button>
+							</>
+						))}
+				</section>
+			</form>
+		</section>
 	);
 };
 

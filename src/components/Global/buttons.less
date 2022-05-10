@@ -1,0 +1,53 @@
+[disabled] {
+	cursor: not-allowed;
+	opacity: .4;
+}
+button,
+.button {
+	margin-bottom: @gutter*4;
+	&:active,
+	&:hover,
+	&:focus {
+		background-color: darken(@russian-green, 10%);
+	}
+}
+button,
+.button,
+input {
+	border: none;
+	outline: none;
+	background: none;
+	font-size: 18px;
+	color: @white;
+	padding: @gutter;
+	text-decoration: none;
+	width: 100%;
+	&[type=email],
+	&[type=password] {
+		border-bottom: 1px solid @russian-green;
+		display: block;
+		margin-top: 2px;
+		transition: border-width .3s ease, margin-top .2s ease;
+		&:focus {
+			margin-top: 0;
+			border-bottom: 3px solid @russian-green;
+		}
+	}
+	&[type=button],
+	&[type=reset] {
+		border: 1px solid @russian-green;
+	}
+	&[type=submit] {
+		background: @russian-green;
+		letter-spacing: 1px;
+		padding: (@gutter*2) 0;
+		text-transform: uppercase;
+		@media @mobile {
+			max-width: 300px;
+		}
+	}
+}
+section#controls {
+	display: flex;
+	gap: 16px;
+}

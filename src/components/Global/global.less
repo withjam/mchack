@@ -1,0 +1,87 @@
+@gutter: 8px;
+@mobile-breakpoint: 640px;
+@tablet-breakpoint: 1024px;
+@mobile: ~"(max-width: 640px)";
+@tablet: ~"(min-width: 641px) and (max-width: 1024px)";
+@desktop: ~"(min-width: 1025px)";
+.absolute-fill() {
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	position: absolute;
+	transform: initial;
+	max-height: initial;
+	height: initial;
+	max-width: initial;
+	width: initial;
+}
+* {
+	box-sizing: border-box;
+}
+body, html {
+	height: 100%;
+	width: 100%;
+}
+body {
+	background: radial-gradient(transparent 40%, #000000c0);
+}
+a {
+	color: @spanish-blue;
+}
+a,
+button {
+	cursor: pointer;
+	&:focus {
+		box-shadow: 0 0 0 3px @spanish-blue;
+		outline: none;
+	}
+}
+.App {
+	font-size: 18px;
+}
+.card {
+	background: @raisin-black;
+	border-radius: @gutter;
+	box-shadow: 0 0 @gutter*6 0 @raisin-black;
+	color: @white;
+	left: 50%;
+	top: 50%;
+	padding: @gutter*6;
+	position: absolute;
+	transform: translateX(-50%) translateY(-50%);
+	height: 100%;
+	max-height: 600px;
+	overflow-y: scroll;
+	max-width: 400px;
+	width: 100%;
+	@media @mobile {
+		.absolute-fill();
+		border-radius: 0;
+	}
+	.App-header {
+		margin-bottom: (@gutter*3);
+		padding: 0;
+	}
+}
+.hidden {
+	display: none !important;
+}
+.input {
+	display: block;
+	position: relative;
+	margin-bottom: @gutter*4;
+	padding-top: @gutter*3;
+}
+label {
+	display: block;
+	font-size: 14px;
+	position: absolute;
+	top: 36px;
+	transition: top .2s ease, font-size .3s ease;
+	z-index: 0;
+	&.non-placeholder {
+		font-size: 18px;
+		top: 0;
+	}
+}

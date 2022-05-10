@@ -1,0 +1,40 @@
+.profile {
+	picture {
+		display: block;
+		position: relative;
+		margin-bottom: @gutter*4;
+		button {
+			background: #000000a0;
+			bottom: 0;
+			left: 0;
+			position: absolute;
+			margin: 0;
+			z-index: 2;
+			&:disabled {
+				display: none;
+			}
+		}
+		img {
+			height: auto;
+			width: 100%;
+		}
+	}
+	section {
+		&#details {
+			flex-direction: column;
+			margin-bottom: @gutter*2;
+			h1 {
+				margin: 0;
+			}
+			input {
+				border-bottom: 1px solid @spanish-blue;
+				padding-top: (@gutter+2);
+				transition: padding-top .2s ease, border-bottom .2s ease;
+				&:focus {
+					border-bottom: 3px solid @spanish-blue;
+					padding-top: @gutter;
+				}
+			}
+		}
+	}
+}

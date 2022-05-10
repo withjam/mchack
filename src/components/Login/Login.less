@@ -1,0 +1,28 @@
+.login {
+	.tabs {
+		display: flex;
+		flex-direction: row;
+		margin-bottom: @gutter*3;
+		justify-content: space-around;
+		a {
+			color: @russian-green;
+			letter-spacing: 1px;
+			padding: (@gutter*2) 0;
+			text-decoration: none;
+			text-transform: uppercase;
+			&:active,
+			&:hover,
+			&:focus {
+				border-bottom: 3px solid @deep-saffron;
+			}
+			&.active {
+				border-bottom: 3px solid @deep-saffron;
+				color: @white;
+				cursor: default;
+			}
+		}
+	}
+	.App-header {
+		justify-content: center;
+	}
+}

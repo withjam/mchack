@@ -1,6 +1,5 @@
 import './App.css';
 import { Navigate, Outlet, useLocation } from 'react-router-dom';
-import Header from 'components/Header';
 import { initializeApp } from 'firebase/app';
 import { getAuth } from 'firebase/auth';
 import { isAnonymousSelector } from 'state';
@@ -52,7 +51,6 @@ function App() {
 
 	return (
 		<div className="App">
-			<Header />
 			<main>
 				<Outlet />
 			</main>
