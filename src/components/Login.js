@@ -24,6 +24,7 @@ export const Login = props => {
 
 	function doSubmit(ev) {
 		ev.preventDefault();
+		console.log('trigger');
 		if (isValid) {
 			if (isNew) {
 				createUserWithEmailAndPassword(auth, email, password)
@@ -68,44 +69,84 @@ export const Login = props => {
 
 	return (
 		<>
-			<form onSubmit={doSubmit}>
-				<header>
-					<h1>{title}</h1>
-				</header>
-
-				<label>Email</label>
-				<input
-					className={`${validEmail ? 'valid' : 'invalid'}`}
-					id="login-email"
-					type="email"
-					value={email}
-					onChange={e => changeEmail(e.target.value)}
-				/>
-
-				<label>Password</label>
-				<input
-					className={`${validPass ? 'valid' : 'invalid'}`}
-					id="login-password"
-					type="password"
-					value={password}
-					onChange={e => changePassword(e.target.value)}
-				/>
-				<button type="submit" disabled={!validPass || !validEmail}>
-					{title}
-				</button>
-			</form>
-
-			<section>
-				{isNew ? (
-					<span>
-						Existing User? <Link to="/sign/in">Log in</Link>
-					</span>
-				) : (
-					<span>
-						New User? <Link to="/sign/up">Sign up</Link>
-					</span>
-				)}
-			</section>
+			<div className="p-3 px-6 min-h-48 flex justify-center items-center">
+				<div className="flex flex-col max-w-md p-6 rounded-md sm:p-10 bg-zinc-100 text-zinc-900 dark:bg-coolGray-900 dark:text-coolGray-100">
+					<div className="mb-8 text-center">
+						<h1 className="my-3 text-4xl font-bold">{title}</h1>
+						<p className="text-sm dark:text-coolGray-400">
+							{title} to {isNew ? 'create your account' : 'access your account'}
+						</p>
+					</div>
+					<form onSubmit={doSubmit} className="space-y-12 ng-untouched ng-pristine ng-valid">
+						<div className="space-y-4">
+							<div>
+								<label htmlFor="email" className="block mb-2 text-sm">
+									Email address
+								</label>
+								<input
+									type="email"
+									name="email"
+									id="email"
+									placeholder="jane.doe@example.com"
+									value={email}
+									onChange={e => changeEmail(e.target.value)}
+									className={`w-full px-3 py-2 border rounded-md border-zinc-200 bg-zinc-200 text-zinc-900 outline-2 outline-violet-500/50 ${
+										validEmail ? 'valid' : 'invalid'
+									}`}
+								/>
+							</div>
+							<div>
+								<div className="flex justify-between mb-2">
+									<label htmlFor="password" className="text-sm">
+										Password
+									</label>
+									{!isNew && (
+										<a
+											rel="noopener noreferrer"
+											href="/"
+											className="text-xs hover:underline dark:text-coolGray-400 outline-2 outline-violet-500/50"
+										>
+											Forgot password?
+										</a>
+									)}
+								</div>
+								<input
+									type="password"
+									name="password"
+									id="password"
+									placeholder="*****"
+									value={password}
+									onChange={e => changePassword(e.target.value)}
+									className={`w-full px-3 py-2 border rounded-md border-zinc-200 bg-zinc-200 text-zinc-900 outline-2 outline-violet-500/50 ${
+										validPass ? 'valid' : 'invalid'
+									}`}
+								/>
+							</div>
+						</div>
+						<div className="space-y-2">
+							<div>
+								<button
+									type="submit"
+									disabled={!validPass || !validEmail}
+									className="w-full px-8 py-3 rounded-md bg-violet-700 text-zinc-100 dark:bg-violet-400 dark:text-coolGray-900"
+								>
+									{title}
+								</button>
+							</div>
+							<p className="px-6 text-sm text-center dark:text-coolGray-400">
+								{isNew ? 'Already have an account?' : "Don't have an account yet?"}
+								{` `}
+								<Link
+									to={`${isNew ? '/sign/in' : '/sign/up'}`}
+									className="hover:underline dark:text-violet-400 outline-2 outline-violet-500/50"
+								>
+									{isNew ? 'Log In' : 'Sign Up'}
+								</Link>
+							</p>
+						</div>
+					</form>
+				</div>
+			</div>
 		</>
 	);
 };

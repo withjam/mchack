@@ -92,43 +92,76 @@ export const Profile = () => {
 
 	return (
 		<form onSubmit={doSubmit}>
-			<button type="button" disabled={!isEditMode} onClick={() => uploadWidget.current.open()}>
-				<picture>
-					{profile.photoURL ? (
-						<img src={profile.photoURL} alt="" width="220" height="220" />
-					) : (
-						<img src={noPhoto} alt="" width="220" height="220" />
-					)}
-				</picture>
-			</button>
-			<header>
-				<h1>
-					{isEditMode ? (
-						<input value={profile.displayName ?? ''} placeholder="Display name" onChange={editProfile('displayName')} />
-					) : (
-						profile.displayName
-					)}
-				</h1>
-				<h2>{profile.email}</h2>
-			</header>
-			<section>
-				{!isEditMode && (
-					<button type="button" onClick={() => setEditMode(true)}>
-						Edit
+			<div className="p-3 px-6 min-h-48 flex justify-center items-center">
+				<div className="flex flex-col max-w-md p-6 rounded-md sm:p-10 bg-zinc-100 text-zinc-900 dark:bg-coolGray-900 dark:text-coolGray-100">
+					<button type="button" disabled={!isEditMode} onClick={() => uploadWidget.current.open()}>
+						<picture>
+							{profile.photoURL ? (
+								<img
+									src={profile.photoURL}
+									alt=""
+									width="220"
+									height="220"
+									className="w-32 h-32 mx-auto rounded-full dark:bg-coolGray-500 aspect-square"
+								/>
+							) : (
+								<img
+									src={noPhoto}
+									alt=""
+									width="220"
+									height="220"
+									className="w-32 h-32 mx-auto rounded-full dark:bg-coolGray-500 aspect-square"
+								/>
+							)}
+						</picture>
 					</button>
-				)}
-				{isEditMode &&
-					(isSaving ? (
-						<ReactLoading color="lightgray" type="spinningBubbles" />
-					) : (
-						<>
-							<button type="reset" onClick={doCancel}>
-								cancel
-							</button>
-							<button type="submit">Save</button>
-						</>
-					))}
-			</section>
+					<div className="space-y-4 text-center divide-y divide-coolGray-700">
+						<div className="my-2 space-y-1">
+							<h2 className="text-zinc-900 text-xl font-semibold sm:text-2xl">
+								{isEditMode ? (
+									<input
+										value={profile.displayName ?? ''}
+										placeholder="Display name"
+										onChange={editProfile('displayName')}
+										className="w-full px-3 py-2 border rounded-md border-zinc-200 bg-zinc-200 text-center text-zinc-900 dark:border-coolGray-700 dark:bg-coolGray-900 dark:text-coolGray-100 outline-2 outline-violet-500/50"
+									/>
+								) : (
+									profile.displayName
+								)}
+							</h2>
+							<p className="px-5 text-xs sm:text-base text-zinc-900 dark:text-coolGray-400">{profile.email}</p>
+						</div>
+						<div className="flex justify-center pt-2 space-x-4 align-center">
+							{!isEditMode && (
+								<button
+									type="button"
+									onClick={() => setEditMode(true)}
+									className="w-full px-8 py-3 rounded-md bg-violet-700 text-zinc-100"
+								>
+									Edit
+								</button>
+							)}
+							{isEditMode &&
+								(isSaving ? (
+									<ReactLoading color="lightgray" type="spinningBubbles" />
+								) : (
+									<>
+										<button
+											type="reset"
+											onClick={doCancel}
+											className="w-full px-8 py-3 rounded-md font-semibold border text-zinc-900 border-violet-700"
+										>
+											cancel
+										</button>
+										<button type="submit" className="w-full px-8 py-3 rounded-md bg-violet-700 text-zinc-100">
+											Save
+										</button>
+									</>
+								))}
+						</div>
+					</div>
+				</div>
+			</div>
 		</form>
 	);
 };
