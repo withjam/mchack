@@ -10,7 +10,9 @@
 		"concurrently": "^7.1.0",
 		"dotenv": "^16.0.0",
 		"firebase": "^9.6.10",
-		"mayoddl-v2": "git@github.com:jtruhler/designsystempoc.git",
+		"less": "^4.1.2",
+		"less-watch-compiler": "^1.16.3",
+		"node-sass": "^7.0.1",
 		"react": "^18.0.0",
 		"react-dom": "^18.0.0",
 		"react-loading": "^2.0.3",
@@ -44,5 +46,8 @@
 			"last 1 firefox version",
 			"last 1 safari version"
 		]
+	},
+	"devDependencies": {
+		"mayoddlv2": "https://github.com/jtruhler/mayoddlpoc.git"
 	}
 }
