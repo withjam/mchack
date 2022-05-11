@@ -6,7 +6,7 @@ import { BrowserRouter } from 'react-router-dom';
 import Routing from './Routing';
 import { Provider } from 'react-redux';
 import { store } from 'state';
-import { defineCustomElements as defineMayoDDL } from 'mayoddlv2/loader';
+import { defineCustomElements as defineMayoDDL } from 'mayoddlpoc/loader';
 
 defineMayoDDL(window);
 
