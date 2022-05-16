@@ -1,0 +1,12 @@
+section.container {
+    display: flex;
+    flex: 1;
+
+    & > * {
+        flex: 1;
+    }
+
+    aside.closed {
+        display: none;
+    }
+}

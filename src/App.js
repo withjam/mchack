@@ -22,8 +22,20 @@ export const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
-function App() {
+console.log('App.js module loaded');
+
+function App(props) {
 	const dispatch = useDispatch();
+	const location = useLocation();
+	const isAnonymous = useSelector(isAnonymousSelector);
+
+	console.log('App.js rendered dispatch: %s, location: %s, isAnonymous: %s', !!dispatch, !!location, isAnonymous, auth, props);
+
+	useEffect(() => {
+		console.log('App.js has mounted');
+		return () => console.log('App.js has dismounted');
+	}, []);
+
 	useEffect(() => {
 		// monitor changes to firebase auth when the app initializes
 		if (dispatch) {
@@ -36,9 +48,6 @@ function App() {
 			});
 		}
 	}, [dispatch]);
-
-	const location = useLocation();
-	const isAnonymous = useSelector(isAnonymousSelector);
 
 	// simple way to detect if auth has loaded yet (typescript wouldn't like it)
 	if (isAnonymous === undefined) {
