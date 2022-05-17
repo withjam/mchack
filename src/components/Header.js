@@ -10,7 +10,6 @@ export const Header = () => {
 	}
 	return (
 		<header className="App-header">
-			<div></div>
 			<img src={logo} className="App-logo" alt="logo" />
 			<div>{isAnonymous === false && <button onClick={logout}>Logout</button>}</div>
 		</header>

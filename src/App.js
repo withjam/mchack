@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import React, { useEffect } from 'react';
 
 import ReactLoading from 'react-loading';
+import { setBreeds } from 'state/breeds';
 
 export const firebaseConfig = {
 	apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
@@ -39,13 +40,31 @@ function App(props) {
 	useEffect(() => {
 		// monitor changes to firebase auth when the app initializes
 		if (dispatch) {
-			return auth.onAuthStateChanged(user => {
+			const controller = new AbortController();
+			(async function fetchBreeds() {
+				console.log('fetching breeds');
+				const resp = await fetch('https://dog.ceo/api/breeds/list/all', {
+					method: 'GET',
+					signal: controller.signal,
+				});
+				const json = await resp.json();
+				console.log('setting breeds', json.message);
+				dispatch(setBreeds(json.message));
+			})();
+
+			const unsub = auth.onAuthStateChanged(user => {
 				if (user) {
 					dispatch(login(user.toJSON()));
 				} else {
 					dispatch(logout());
 				}
 			});
+
+			return () => {
+				unsub();
+				console.log('aborting fetch breeds');
+				controller.abort();
+			};
 		}
 	}, [dispatch]);
 
