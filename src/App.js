@@ -9,7 +9,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import React, { useEffect } from 'react';
 
 import ReactLoading from 'react-loading';
-import { setBreeds } from 'state/breeds';
+import { fetchAllBreeds } from 'state/breeds';
 
 export const firebaseConfig = {
 	apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
@@ -30,41 +30,28 @@ function App(props) {
 	const location = useLocation();
 	const isAnonymous = useSelector(isAnonymousSelector);
 
-	console.log('App.js rendered dispatch: %s, location: %s, isAnonymous: %s', !!dispatch, !!location, isAnonymous, auth, props);
+	console.log('App.js rendered');
 
 	useEffect(() => {
+		// mount/dismount of App component
 		console.log('App.js has mounted');
 		return () => console.log('App.js has dismounted');
 	}, []);
 
 	useEffect(() => {
-		// monitor changes to firebase auth when the app initializes
+		// do things that require dispatch
 		if (dispatch) {
-			const controller = new AbortController();
-			(async function fetchBreeds() {
-				console.log('fetching breeds');
-				const resp = await fetch('https://dog.ceo/api/breeds/list/all', {
-					method: 'GET',
-					signal: controller.signal,
-				});
-				const json = await resp.json();
-				console.log('setting breeds', json.message);
-				dispatch(setBreeds(json.message));
-			})();
+			// use the async thunk to fetch for us
+			dispatch(fetchAllBreeds());
 
-			const unsub = auth.onAuthStateChanged(user => {
+			// start watching for auth state changes
+			return auth.onAuthStateChanged(user => {
 				if (user) {
 					dispatch(login(user.toJSON()));
 				} else {
 					dispatch(logout());
 				}
 			});
-
-			return () => {
-				unsub();
-				console.log('aborting fetch breeds');
-				controller.abort();
-			};
 		}
 	}, [dispatch]);
 
